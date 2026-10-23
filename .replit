@@ -1,0 +1,5 @@
+entrypoint = "app.py"
+run = "python -m pip install -r requirements.txt && python app.py"
+
+[deployment]
+run = ["sh", "-c", "python -m pip install -r requirements.txt && python app.py"]
