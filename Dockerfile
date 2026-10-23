@@ -7,11 +7,12 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 RUN apt-get update \
     && apt-get install -y --no-install-recommends ffmpeg \
     && rm -rf /var/lib/apt/lists/*
-
+    
 WORKDIR /app
 COPY requirements.txt .
-RUN python -m pip install --upgrade pip \
-    && python -m pip install -r requirements.txt
+RUN python -m pip install --upgrade pip 
+&& python -m pip install -r requirements.txt 
+&& python -m pip install --upgrade --pre "yt-dlp[default]"
 
 COPY . .
 RUN mkdir -p uploads outputs
