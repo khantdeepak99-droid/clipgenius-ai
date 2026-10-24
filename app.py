@@ -365,8 +365,9 @@ def create_clip():
     try:
         # Accurate re-encode, broadly compatible MP4/H.264 + AAC.
         run_command([
-            "ffmpeg", "-y", "-ss", str(start), "-i", str(input_path),
-            "-t", str(end-start), "-map", "0:v:0", "-map", "0:a?",
+            "ffmpeg", "-y", "-i", str(input_path),
+            "-ss", str(start), "-t", str(end-start),
+            "-map", "0:v:0", "-map", "0:a?",
             "-c:v", "libx264", "-preset", "veryfast", "-crf", "23",
             "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart",
             str(out_path)
